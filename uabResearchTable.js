@@ -175,7 +175,7 @@ var APSAtable = (function () {
     row2 = $("<tr>", {style: "width:100%;padding:5px"}).appendTo(table);
     for (i = 0; i < length; i += 1) {
       $("<td>", {style: "padding:5px;width:" + options.visible.order[i][1], text: options.visible.order[i][2]}).appendTo(row1);
-      $("<td>", {style: "padding:5px;width:" + options.visible.order[i][1]}).append(filterMaker(options.visible.order[i][0])).appendTo(row2);
+      $("<td>", {style: "resize:none;padding:5px;width:" + options.visible.order[i][1]}).append(filterMaker(options.visible.order[i][0])).appendTo(row2);
     }
     makeTableBody(table);
   };
@@ -200,14 +200,16 @@ var APSAtable = (function () {
   };
 
   filterMaker = function (cat) {
-    var ret, i, changeFunc, mainFunc, innerRet, num, a, lis, text;
+    var ret, i, changeFunc, mainFunc, innerRet, num, a, lis, text, textFiller;
     lis = [];
 
     mainFunc = function (evt) {
-      var k, j, that, removed = [];
+      var k, j, that, removed = [], width;
       that = evt.target;
       evt.preventDefault();
       console.log(evt, that.value);
+      width = ret.width();
+      textFiller.width(width-40 + 'px');
       //return;
       if (that.value) {
         text.text(that.value);
@@ -220,6 +222,7 @@ var APSAtable = (function () {
       } else {
         text.text('All');
       }
+
       if (removed.length > 0) {
         changeFunc = function (evt) {
           var k;
@@ -241,7 +244,8 @@ var APSAtable = (function () {
     if (typeof options.visible[cat] !== 'function') {
       text = $('<span>', {text: "All"});
       innerRet = $('<button>', {style:"width:100%;", "class": "btn btn-default dropdown-toggle", type: "button", id: "dropdownMenu" + num, 'data-toggle':"dropdown", 'aria-haspopup':"true", 'aria-expanded':"true"});
-      innerRet.append(text).append($('<span>&nbsp;</span><span class="caret"></span>'));
+      textFiller =$('<div>',{style:"overflow:hidden"}).append(text).append($('<span>&nbsp;</span><span class="caret"></span>'));
+      innerRet.append(textFiller);
       ret = $('<div>', {style:"width:100%;", "class":"dropdown"}).append(innerRet);
       innerRet = $('<ul>', {'class':"dropdown-menu", 'aria-labelledby':"dropdownMenu" + num}).appendTo(ret);
       
