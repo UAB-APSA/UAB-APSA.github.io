@@ -2,6 +2,12 @@
 var APSAtable = (function () {
   'use strict';
 
+/****** To add to your own website: ******\
+<div id="researchOps"></div>
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js" onload="jQuery.getScript('https://uab-apsa.googlecode.com/git/buildUABresearchTable.js', function (x) {APSAtable.makeTable('researchOps');});"></script>
+\******************************************/
+
+
   console.log('https://uab-apsa.googlecode.com/git/buildUABresearchTable.js ' + 
     'v1.1.1');
 
