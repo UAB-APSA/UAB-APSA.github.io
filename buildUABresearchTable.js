@@ -4,19 +4,19 @@ var APSAtable = (function () {
 
 /****** To add to your own website: ******\
 <div id="researchOps"></div>
-  <script src="https://code.jquery.com/jquery-1.11.1.min.js" onload="jQuery.getScript('https://uab-apsa.googlecode.com/git/buildUABresearchTable.js', function (x) {APSAtable.makeTable('researchOps');});"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js" onload="jQuery.getScript('https://uab-apsa.github.io/buildUABresearchTable.js', function (x) {APSAtable.makeTable('researchOps');});"></script>
 \******************************************/
 
 
-  console.log('https://uab-apsa.googlecode.com/git/buildUABresearchTable.js ' + 
+  console.log('https://uab-apsa.github.io/buildUABresearchTable.js ' + 
     'v1.1.1');
 
   //variables
   var curl, url, $, main, makeTable, frame, div;
 
   //variable declaration (for actual running)
-  curl = 'https://uab-apsa.googlecode.com';
-  url = curl + '/git/table.html#' + encodeURIComponent(document.location.href);
+  curl = 'https://uab-apsa.github.io';
+  url = curl + '/table.html#' + encodeURIComponent(document.location.href);
 
   //The below is for develoment purpose
   // curl = 'http://127.0.0.1:8000';

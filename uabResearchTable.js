@@ -1,7 +1,7 @@
 /*global parent, console, $, jQuery, window */
 var APSAtable = (function () {
   'use strict';
-  console.log('https://uab-apsa.googlecode.com/git/uabResearchTable.js ' +
+  console.log('https://uab-apsa.github.io/uabResearchTable.js ' +
     'v2.1.2');
 
   //variables
@@ -154,7 +154,7 @@ var APSAtable = (function () {
     searchStr = data.str;
     madeBy = $('<div>', {style: "font-size:110%"});
     div.append(madeBy);
-    table = $("<table>", {"class": "uabR-table", style: "width:100%"}).appendTo(div);
+    table = $("<table>", {"class": "table", style: "width:100%"}).appendTo(div);
     setUpSizing();
     makeActualTable();
   };
