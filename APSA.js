@@ -1,8 +1,8 @@
 /*global console, $, jQuery */
 var updateChanges;
-var urlBase = 'https://uab-apsa.googlecode.com/git/';
+var urlBase = 'https://uab-apsa.github.io/';
 console.log(urlBase + 'ASPA.js ' +
-    "v2.4.3");
+    "v2.5.3");
 //Tracking
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
