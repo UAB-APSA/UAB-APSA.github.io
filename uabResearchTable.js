@@ -200,19 +200,25 @@ var APSAtable = (function () {
   };
 
   filterMaker = function (cat) {
-    var ret, i, changeFunc, mainFunc;
+    var ret, i, changeFunc, mainFunc, innerRet, num, a, lis, text;
+    lis = [];
 
     mainFunc = function (evt) {
-      var j, that, removed = [];
+      var k, j, that, removed = [];
       that = evt.target;
       evt.preventDefault();
+      console.log(evt, that.value);
+      //return;
       if (that.value) {
+        text.text(that.value);
         for (j = 0; j < dataArr.length; j += 1) {
           if (!dataArr[j][cat].join(',').match(that.value)) {
             removed.push(dataArr.splice(j, 1)[0]);
             j -= 1;
           }
         }
+      } else {
+        text.text('All');
       }
       if (removed.length > 0) {
         changeFunc = function (evt) {
@@ -223,16 +229,30 @@ var APSAtable = (function () {
           removed = [];
           mainFunc(evt);
         };
-        ret.change(changeFunc);
+        for (k = 0; k < lis.length; k += 1) {
+          lis[k].click(changeFunc);
+        }
+        //ret.change(changeFunc);
       }
       updateData();
     };
     changeFunc = mainFunc;
-
+    num = Math.random().toString().replace('0.','');
     if (typeof options.visible[cat] !== 'function') {
-      ret = $("<select>", {style: "width:100%"}).append($('<option>', {style: "width:100%;", value: "", text: 'filter'})).change(changeFunc);
+      text = $('<span>', {text: "All"});
+      innerRet = $('<button>', {"class": "btn btn-default dropdown-toggle", type: "button", id: "dropdownMenu" + num, 'data-toggle':"dropdown", 'aria-haspopup':"true", 'aria-expanded':"true"});
+      innerRet.append(text).append($('<span>&nbsp;</span><span class="caret"></span>'));
+      ret = $('<div>', {"class":"dropdown"}).append(innerRet);
+      innerRet = $('<ul>', {'class':"dropdown-menu", 'aria-labelledby':"dropdownMenu" + num}).appendTo(ret);
+      
+      //ret = $("<select>", {style: "width:100%"}).append($('<option>', {style: "width:100%;", value: "", text: 'filter'})).change(changeFunc);
+      a = $('<a>', {text: "All", val: ""}).click(changeFunc);
+      $('<li>').append(a).appendTo(innerRet);
+      lis.push(a);
       for (i = 0; i < options.visible[cat].length; i += 1) {
-        $('<option>', {value: options.visible[cat][i], text: options.visible[cat][i]}).appendTo(ret);
+        a = $('<a>', {text: options.visible[cat][i], val: options.visible[cat][i]}).click(changeFunc);
+        lis.push(a);
+        $('<li>').append(a).appendTo(innerRet);
       }
     } else if (cat !== 'date') {
       ret = $('<input>', {placeholder: "Search by keyword or PI", style: 'width:95%'}).keyup(options.visible[cat]);
