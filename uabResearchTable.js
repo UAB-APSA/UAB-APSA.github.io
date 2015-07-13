@@ -154,7 +154,7 @@ var APSAtable = (function () {
     searchStr = data.str;
     madeBy = $('<div>', {style: "font-size:110%"});
     div.append(madeBy);
-    table = $("<table>", {"class": "table", style: "width:100%"}).appendTo(div);
+    table = $("<table>", {"class": "table", style: "font-size:100%;width:100%;"}).appendTo(div);
     setUpSizing();
     makeActualTable();
   };
