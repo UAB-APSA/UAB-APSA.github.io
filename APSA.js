@@ -2,7 +2,7 @@
 var updateChanges;
 var urlBase = 'https://uab-apsa.github.io/';
 console.log(urlBase + 'ASPA.js ' +
-    "v2.5.3");
+    "v2.5.4");
 //Tracking
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -48,7 +48,7 @@ var getImportantDates, importantDates;
     $('<div />', {html: '<a href="#" id="tab2">Officers</a><div class= "hide" style="margin-left:10px"><table><tr>' +
                         '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/TylerMcCaw.jpg"></img><br /><b>President</b><br />Tyler McCaw</td>' +
                         '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/Hu_Muhan.jpg"></img><br /><b>Vice President</b><br />Muhan Hu</td>' +
-                        '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/         "></img><br /><b>Secretary</b><br />Paige Souder</td>' +
+                        '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/jaclyn_souder.jpg"></img><br /><b>Secretary</b><br />Paige Souder</td>' +
                         '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/Sebastian_Chung.jpg"></img><br /><b>Treasurer</b><br />Sebastian Chung</td>' +
                         '</tr><tr>' +
                         '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/Weaver_Alice.jpg"></img><br /><b>Past President</b><br />Alice Weaver</td>' +
