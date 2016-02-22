@@ -42,6 +42,7 @@ $('<h2>', {text: "* - indicates required field"}).appendTo(form);
 
 //Choice if you are editing a past submission...
 $('<h2>', {text: "Please indicate if this is a first submission of a new project or an update to a previously submitted project."}).appendTo(form);
+$('<h2>', {text: "Disabled for Demo."}).appendTo(form);
 list = $('<select>', {name:'formtype', id:'formtype'}).appendTo(form).change(function () {
    if($('#formtype option:selected').val() === 'Previous') {
       $('<div>', {text:'Enter your editing key:'}).appendTo(forID);
@@ -60,7 +61,7 @@ list = $('<select>', {name:'formtype', id:'formtype'}).appendTo(form).change(fun
    
 } );
 $('<option>', {value:"NewForm", text:"New project"}).appendTo(list);
-$('<option>', {value:"Previous", text:"Previous project"}).appendTo(list);
+// $('<option>', {value:"Previous", text:"Previous project"}).appendTo(list);
 
 var oldResp = function(resp) {
     if (!resp) {
@@ -129,38 +130,143 @@ var form = $('<form>', {id:"rest"}).appendTo(main);
 // });
 // warnTitle = $('<div>', {id: "warnTitle", class: "warn"}).appendTo(form);
 
+var longTermChecks = [];
+var shortTermChecks = [];
+
 //Audience
 $('<h2>', {id: "Audience", text: "Audience*"}).appendTo(form);
-$('<h3>', {id: "ShortTerm", text: "Long Term Project (> 8 weeks)"}).appendTo(form);
+$('<h3>', {id: "ShortTerm", text: "Long Term Project(s) (> 8 weeks)"}).appendTo(form);
 list = $('<ul>').appendTo(form);
+//Long term
 // Undergrad year
 ilist = $('<li>').appendTo(list);
-$('<input>', {name: "Audience", type: "checkbox", value: "Undergraduate Student - Academic Year"}).appendTo(ilist);
+longTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Undergraduate Student - Academic Year"}).appendTo(ilist));
 $('<span>', {text:"Undergraduate Student - Academic Year"}).appendTo(ilist);
 // Grad student
 ilist = $('<li>').appendTo(list);
-$('<input>', {name: "Audience", type: "checkbox", value: "Graduate or MD/PhD Student"}).appendTo(ilist);
+longTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Graduate or MD/PhD Student"}).appendTo(ilist));
 $('<span>', {text:"Graduate or MD/PhD Student"}).appendTo(ilist);
 // Medical Resident/Fellow
 ilist = $('<li>').appendTo(list);
-$('<input>', {name: "Audience", type: "checkbox", value: "Resident"}).appendTo(ilist);
+longTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Resident"}).appendTo(ilist));
 $('<span>', {text:"Medical Resident/Fellow"}).appendTo(ilist);
 
-$('<h3>', {id: "ShortTerm", text: "Short Term Project (~ 8 weeks)"}).appendTo(form);
+//Add space for filling in short term and long term projects
+listLongTerm = $('<ul>').appendTo(form);
+
+//Short term
+$('<h3>', {id: "ShortTerm", text: "Short Term Project(s) (~ 8 weeks)"}).appendTo(form);
 $('<span>', {text: "Select All That Apply"}).appendTo(form);
 list = $('<ul>').appendTo(form);
 //Undergrad
 ilist = $('<li>').appendTo(list);
-$('<input>', {name: "Audience", type: "checkbox", value: "Undergraduate Student - Summer"}).appendTo(ilist);
+shortTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Undergraduate Student - Summer"}).appendTo(ilist));
 $('<span>', {text:"Undergraduate Student - Summer"}).appendTo(ilist);
 //Med Student Summer
 ilist = $('<li>').appendTo(list);
-$('<input>', {name: "Audience", type: "checkbox", value: "Medical Student - Summer"}).appendTo(ilist);
+shortTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Medical Student - Summer"}).appendTo(ilist));
 $('<span>', {text:"Medical Student - Summer (~6-8 weeks)"}).appendTo(ilist);
 //Med Student Scholarly
 ilist = $('<li>').appendTo(list);
-$('<input>', {name: "Audience", type: "checkbox", value: "Medical Student - Scholarly Activity"}).appendTo(ilist);
+shortTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Medical Student - Scholarly Activity"}).appendTo(ilist));
 $('<span>', {text:"Medical Student - Scholarly Activity (~8 weeks)"}).appendTo(ilist);
+
+//Add space for filling in short term and long term projects
+listShortTerm = $('<ul>').appendTo(form);
+
+var longTermOpen = false;
+//Code to populate the spaces - long term
+longTermChecks.map(function (element) {
+  element.click(function (event) {
+    console.log('clicked!!', this.checked);
+    if(this.checked) {
+      longTermOpen = populateTermForm(longTermOpen, listLongTerm);
+    } else {
+      longTermOpen = removeTermForm(longTermOpen, longTermChecks, listLongTerm);
+    }
+  });
+});
+
+var shortTermOpen = false;
+//Code to populate the spaces
+shortTermChecks.map(function (element) {
+  element.click(function (event) {
+    console.log('clicked!!', this.checked);
+    if(this.checked) {
+      shortTermOpen = populateTermForm(shortTermOpen, listShortTerm);
+    } else {
+      shortTermOpen = removeTermForm(shortTermOpen, shortTermChecks, listShortTerm);
+    }
+  });
+});
+
+var shortTermOpen = false;
+populateTermForm = function (openBool, list) {
+  if(!openBool) {
+    list.show();
+    openBool = true;
+    addProject(list);
+  }
+  return openBool;
+}
+removeTermForm = function (openBool, checkBoxes, ulElem) {
+    openBool = false;
+    for (var ii = 0; ii < checkBoxes.length; ii += 1) {
+        if(checkBoxes[ii][0].checked) {
+            openBool = true;
+        }
+    }
+    if(!openBool) {
+        ulElem.hide();
+    }
+    return openBool;
+};
+
+addProject = function (mainList) {
+    //Project Title
+    var listToAdd = $('<li>').appendTo(mainList);
+    $('<div style="">', {text: "Please note that this is supposed to describe a project for which you are currently seeking students. You may add as many projects as you would like."}).appendTo(listToAdd);
+    $('<h2>', {id: "Summary", text: "Project Name/Summary*"}).appendTo(listToAdd);
+    $('<div>', {text: "150 character maximum"}).appendTo(listToAdd);
+    $('<input>', {name: "Summary", type: 'text'}).appendTo(listToAdd).keyup(function(evt) {
+        if ( $(evt.target).val().length > 75 ) {
+            warnTitle.text("Currently you have " + $(evt.target).val().length + " characters, please limit this to 75");
+        } else {
+            warnTitle.text("");
+        }
+    });
+    warnTitle = $('<div>', {id: "warnTitle", class: "warn"}).appendTo(listToAdd);
+    //Full Opportunity Description*
+    var warnDesc;
+    $('<h2>', {id: 'description', text: "Full Opportunity Description*"}).appendTo(listToAdd);
+    $('<div>', {text: "5,000 character maximum"}).appendTo(listToAdd);
+    $('<textarea>', {name: "description", rows: 20, cols: 82}).appendTo(listToAdd).keyup(function(evt) {
+        if ( $(evt.target).val().length > 5000 ) {
+            warnDesc.text("Currently you have " + $(evt.target).val().length + " characters, please limit this to 5,000");
+        } else {
+            warnDesc.text("");
+        }
+    });
+    warnDesc = $('<div>', {id: "warnTitle", class: "warn"}).appendTo(listToAdd);
+
+    //URL to additional information or online application
+    $('<h2>', {text: "URL to additional information or online application"}).appendTo(listToAdd);
+    $('<input>', {name: "urlToAddRes", type: 'text'}).appendTo(listToAdd);
+
+    //Remove this project - TODO
+    $('<h2>', {text: "Add or Remove Project?"}).appendTo(listToAdd);
+    $('<button>', {text: "Remove Project (Not Functional)"}).click(function (evt) {
+        evt.preventDefault();
+    }).appendTo(listToAdd);
+
+    //Add additional Project
+    (function (mainList){
+        $('<button>', {text: "Add Additional Project"}).click(function (evt) {
+            evt.preventDefault();
+            addProject(mainList);
+        }).appendTo(listToAdd);
+    }(mainList));
+}
 
 
 //Research Sites
@@ -324,21 +430,21 @@ $('<input>', {name: "cPN", type: 'text'}).appendTo(form).keyup(function(evt) {
 warnPhone = $('<div>', {id: "warnTitle", class: "warn"}).appendTo(form);
 
 //Full Opportunity Description*
-var warnDesc;
-$('<h2>', {id: 'description', text: "Full Opportunity Description*"}).appendTo(form);
-$('<div>', {text: "5,000 character maximum"}).appendTo(form);
-$('<textarea>', {name: "description", rows: 20, cols: 82}).appendTo(form).keyup(function(evt) {
-   if ( $(evt.target).val().length > 5000 ) {
-      warnDesc.text("Currently you have " + $(evt.target).val().length + " characters, please limit this to 5,000");
-   } else {
-      warnDesc.text("");
-   }
-});
-warnDesc = $('<div>', {id: "warnTitle", class: "warn"}).appendTo(form);
+// var warnDesc;
+// $('<h2>', {id: 'description', text: "Full Opportunity Description*"}).appendTo(form);
+// $('<div>', {text: "5,000 character maximum"}).appendTo(form);
+// $('<textarea>', {name: "description", rows: 20, cols: 82}).appendTo(form).keyup(function(evt) {
+//    if ( $(evt.target).val().length > 5000 ) {
+//       warnDesc.text("Currently you have " + $(evt.target).val().length + " characters, please limit this to 5,000");
+//    } else {
+//       warnDesc.text("");
+//    }
+// });
+// warnDesc = $('<div>', {id: "warnTitle", class: "warn"}).appendTo(form);
 
-//URL to additional information or online application
-$('<h2>', {text: "URL to additional information or online application"}).appendTo(form);
-$('<input>', {name: "urlToAddRes", type: 'text'}).appendTo(form);
+// //URL to additional information or online application
+// $('<h2>', {text: "URL to additional information or online application"}).appendTo(form);
+// $('<input>', {name: "urlToAddRes", type: 'text'}).appendTo(form);
 
 // //File for additional information
 // $('<h2>', {text: "Attach a document with more information"}).appendTo(form);
@@ -355,9 +461,9 @@ $('<span>', {text: "I understand the above statement"}).appendTo(form);
 $('<br>').appendTo(form);$('<br>').appendTo(form);
 
 //Submit Button
-$('<input>', {id: 'mainSub', class: "login login-submit", type:"submit", style:"width:100%", value:"Submit"}).click(submitFunc).appendTo(form);
+// $('<input>', {id: 'mainSub', class: "login login-submit", type:"submit", style:"width:100%", value:"Submit"}).click(submitFunc).appendTo(form);
 
-$('<h2>', {id:"submitText"}).appendTo(form);
+$('<h2>', {text:"Submit Button Disabled for demo", id:"submitText"}).appendTo(form);
 
 var formResp = function(resp) {
     var good = true;
