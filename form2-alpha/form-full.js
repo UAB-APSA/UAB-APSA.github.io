@@ -42,7 +42,7 @@ $('<div class="emp">', {text: "* - indicates required field"}).appendTo(form);
 
 //Choice if you are editing a past submission...
 $('<h2>', {text: "Please indicate if this is a first submission of a new project or an update to a previously submitted project."}).appendTo(form);
-$('<h2>', {text: "Disabled for Demo."}).appendTo(form);
+$('<div style="font-weight: bold;">', {text: "Disabled for Demo."}).appendTo(form);
 list = $('<select>', {name:'formtype', id:'formtype'}).appendTo(form).change(function () {
    if($('#formtype option:selected').val() === 'Previous') {
       $('<div>', {text:'Enter your editing key:'}).appendTo(forID);
