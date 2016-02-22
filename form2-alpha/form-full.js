@@ -91,20 +91,12 @@ var oldResp = function(resp) {
         $('#secondSub').remove();
         oldEditKey = $('#keyForEdit').val();
         $('#lookUpOld').html("<h2><b>"+$('#keyForEdit').val()+" was found, please make any edits below, submission date will be updated to today's date</b></h2>");
-//        $('[name=Summary]').val("Does it work?");
+        //$('[name=Summary]').val("Does it work?");
         $('#rest').append($('<input>', {name: "ftID", type: "hidden", val:resp.ftID}));
         $('#rest').show();  
         var button = $('<button>', {class: "login login-submit", style:"width:100%;background-color:red;", text:"Delete this entry."}).click(function(evt) {
            evt.preventDefault();
            if(window.confirm("Are you sure you would like to delete this entry?")) {
-//?$$$$$
-//?$$$$$//?$$$$$
-//?$$$$$
-//?$$$$$
-//?$$$$$
-//?$$$$$
-//?$$$$$
-
               google.script.run.withSuccessHandler(deleteResp).deleteEntry(resp.ftID);
            }
         });
@@ -126,39 +118,50 @@ var deleteResp = function (res) {
 var forID = $('<span>').appendTo(form);
 var form = $('<form>', {id:"rest"}).appendTo(main);
 //Title
-$('<h2>', {id: "Summary", text: "Project Name/Summary*"}).appendTo(form);
-$('<div>', {text: "150 character maximum"}).appendTo(form);
-$('<input>', {name: "Summary", type: 'text'}).appendTo(form).keyup(function(evt) {
-   if ( $(evt.target).val().length > 75 ) {
-      warnTitle.text("Currently you have " + $(evt.target).val().length + " characters, please limit this to 75");
-   } else {
-      warnTitle.text("");
-   }
-});
-warnTitle = $('<div>', {id: "warnTitle", class: "warn"}).appendTo(form);
+// $('<h2>', {id: "Summary", text: "Project Name/Summary*"}).appendTo(form);
+// $('<div>', {text: "150 character maximum"}).appendTo(form);
+// $('<input>', {name: "Summary", type: 'text'}).appendTo(form).keyup(function(evt) {
+//    if ( $(evt.target).val().length > 75 ) {
+//       warnTitle.text("Currently you have " + $(evt.target).val().length + " characters, please limit this to 75");
+//    } else {
+//       warnTitle.text("");
+//    }
+// });
+// warnTitle = $('<div>', {id: "warnTitle", class: "warn"}).appendTo(form);
 
 //Audience
 $('<h2>', {id: "Audience", text: "Audience*"}).appendTo(form);
-$('<span>', {text: "Select All That Apply"}).appendTo(form);
+$('<h3>', {id: "ShortTerm", text: "Long Term Project (> 8 weeks)"}).appendTo(form);
 list = $('<ul>').appendTo(form);
-ilist = $('<li>').appendTo(list);
-$('<input>', {name: "Audience", type: "checkbox", value: "Undergraduate Student - Summer"}).appendTo(ilist);
-$('<span>', {text:"Undergraduate Student - Summer"}).appendTo(ilist);
+// Undergrad year
 ilist = $('<li>').appendTo(list);
 $('<input>', {name: "Audience", type: "checkbox", value: "Undergraduate Student - Academic Year"}).appendTo(ilist);
 $('<span>', {text:"Undergraduate Student - Academic Year"}).appendTo(ilist);
-ilist = $('<li>').appendTo(list);
-$('<input>', {name: "Audience", type: "checkbox", value: "Medical Student - Summer"}).appendTo(ilist);
-$('<span>', {text:"Medical Student - Summer"}).appendTo(ilist);
-ilist = $('<li>').appendTo(list);
-$('<input>', {name: "Audience", type: "checkbox", value: "Medical Student - Scholarly Activity"}).appendTo(ilist);
-$('<span>', {text:"Medical Student - Scholarly Activity"}).appendTo(ilist);
+// Grad student
 ilist = $('<li>').appendTo(list);
 $('<input>', {name: "Audience", type: "checkbox", value: "Graduate or MD/PhD Student"}).appendTo(ilist);
 $('<span>', {text:"Graduate or MD/PhD Student"}).appendTo(ilist);
+// Medical Resident/Fellow
 ilist = $('<li>').appendTo(list);
 $('<input>', {name: "Audience", type: "checkbox", value: "Resident"}).appendTo(ilist);
-$('<span>', {text:"Resident"}).appendTo(ilist);
+$('<span>', {text:"Medical Resident/Fellow"}).appendTo(ilist);
+
+$('<h3>', {id: "ShortTerm", text: "Short Term Project (~ 8 weeks)"}).appendTo(form);
+$('<span>', {text: "Select All That Apply"}).appendTo(form);
+list = $('<ul>').appendTo(form);
+//Undergrad
+ilist = $('<li>').appendTo(list);
+$('<input>', {name: "Audience", type: "checkbox", value: "Undergraduate Student - Summer"}).appendTo(ilist);
+$('<span>', {text:"Undergraduate Student - Summer"}).appendTo(ilist);
+//Med Student Summer
+ilist = $('<li>').appendTo(list);
+$('<input>', {name: "Audience", type: "checkbox", value: "Medical Student - Summer"}).appendTo(ilist);
+$('<span>', {text:"Medical Student - Summer (~6-8 weeks)"}).appendTo(ilist);
+//Med Student Scholarly
+ilist = $('<li>').appendTo(list);
+$('<input>', {name: "Audience", type: "checkbox", value: "Medical Student - Scholarly Activity"}).appendTo(ilist);
+$('<span>', {text:"Medical Student - Scholarly Activity (~8 weeks)"}).appendTo(ilist);
+
 
 //Research Sites
 $('<h2>', {id: "Site", text: "Research Site*"}).appendTo(form);
