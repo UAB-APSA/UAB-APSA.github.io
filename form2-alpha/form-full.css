@@ -16,9 +16,20 @@
  font-size: 2.3em;
 }
 .login-card h2 {
- font-weight: 200;
- text-align: left;
- font-size: 1.2em;
+    font-size: 1.17em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+.login-card h3 {
+    font-size: 1.07em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
 }
 
 .login-card input[type=submit] {
