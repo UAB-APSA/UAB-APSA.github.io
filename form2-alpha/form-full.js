@@ -38,7 +38,7 @@ google.script.run = function (gscript, data, callback) {
 
 $('<h1>', {text: "Submit Research Project"}).appendTo(main);
 var form = $('<form>', {id:"lookUpOld"}).appendTo(main);
-$('<h2>', {text: "* - indicates required field"}).appendTo(form);
+$('<div class="emp">', {text: "* - indicates required field"}).appendTo(form);
 
 //Choice if you are editing a past submission...
 $('<h2>', {text: "Please indicate if this is a first submission of a new project or an update to a previously submitted project."}).appendTo(form);
