@@ -136,6 +136,7 @@ var shortTermChecks = [];
 //Audience
 $('<h2>', {id: "Audience", text: "Audience*"}).appendTo(form);
 $('<h3>', {id: "ShortTerm", text: "Long Term Project(s) (> 8 weeks)"}).appendTo(form);
+$('<span>', {text: "Select All That Apply"}).appendTo(form);
 list = $('<ul>').appendTo(form);
 //Long term
 // Undergrad year
@@ -239,7 +240,7 @@ addProject = function (mainList) {
     //Full Opportunity Description*
     var warnDesc;
     $('<h2>', {id: 'description', text: "Full Opportunity Description*"}).appendTo(listToAdd);
-    $('<div>', {text: "5,000 character maximum"}).appendTo(listToAdd);
+    $('<div>', {text: "5,000 character maximum. Please describe the goal of the project, the role of the student in the project, and the types of experiments that will be done. Description should be specific to the time frame indicated."}).appendTo(listToAdd);
     $('<textarea>', {name: "description", rows: 20, cols: 82}).appendTo(listToAdd).keyup(function(evt) {
         if ( $(evt.target).val().length > 5000 ) {
             warnDesc.text("Currently you have " + $(evt.target).val().length + " characters, please limit this to 5,000");
