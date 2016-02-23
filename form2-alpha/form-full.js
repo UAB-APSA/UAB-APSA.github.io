@@ -166,7 +166,7 @@ list = $('<ul>').appendTo(form);
 //Undergrad
 ilist = $('<li>').appendTo(list);
 interTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Undergraduate Student - Academic Year"}).appendTo(ilist));
-$('<span>', {text:"Undergraduate Student - Summer"}).appendTo(ilist);
+$('<span>', {text:"Undergraduate Student"}).appendTo(ilist);
 //Med Student Year out
 ilist = $('<li>').appendTo(list);
 interTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Medical Student - Year Out"}).appendTo(ilist));
@@ -174,7 +174,7 @@ $('<span>', {text:"Medical Student - Year Out"}).appendTo(ilist);
 //Masters Student
 ilist = $('<li>').appendTo(list);
 interTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Masters Student"}).appendTo(ilist));
-$('<span>', {text:"Masters Student - Rotation (~8 weeks)"}).appendTo(ilist);
+$('<span>', {text:"Masters Student"}).appendTo(ilist);
 // Medical Resident/Fellow
 ilist = $('<li>').appendTo(list);
 interTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Resident - Year-Long"}).appendTo(ilist));
@@ -193,15 +193,15 @@ $('<span>', {text:"Undergraduate Student - Summer"}).appendTo(ilist);
 //Med Student Summer
 ilist = $('<li>').appendTo(list);
 shortTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Medical Student - Summer"}).appendTo(ilist));
-$('<span>', {text:"Medical Student - Summer Research (~6-8 weeks)"}).appendTo(ilist);
+$('<span>', {text:"Medical Student - Summer Research"}).appendTo(ilist);
 //Med Student Scholarly Activity
 ilist = $('<li>').appendTo(list);
 shortTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Medical Student - Scholarly"}).appendTo(ilist));
-$('<span>', {text:"Medical Student - Scholarly Activity (~8 weeks)"}).appendTo(ilist);
+$('<span>', {text:"Medical Student - Scholarly Activity"}).appendTo(ilist);
 //Graduate Student - Rotation
 ilist = $('<li>').appendTo(list);
 shortTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Graduate Student - Short Term"}).appendTo(ilist));
-$('<span>', {text:"Graduate Student - Rotation (~8 weeks)"}).appendTo(ilist);
+$('<span>', {text:"Graduate Student - Rotation"}).appendTo(ilist);
 // Medical Resident/Fellow
 ilist = $('<li>').appendTo(list);
 shortTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Resident - Short Term"}).appendTo(ilist));
