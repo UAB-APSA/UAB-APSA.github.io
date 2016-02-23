@@ -161,16 +161,16 @@ $('<span>', {text: "Select All That Apply"}).appendTo(form);
 list = $('<ul>').appendTo(form);
 //Undergrad
 ilist = $('<li>').appendTo(list);
-shortTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Undergraduate Student - Summer"}).appendTo(ilist));
+shortTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Undergraduate Student - Short Term"}).appendTo(ilist));
 $('<span>', {text:"Undergraduate Student - Summer"}).appendTo(ilist);
 //Med Student Summer
 ilist = $('<li>').appendTo(list);
-shortTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Medical Student - Summer"}).appendTo(ilist));
-$('<span>', {text:"Medical Student - Summer (~6-8 weeks)"}).appendTo(ilist);
-//Med Student Scholarly
+shortTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Medical Student - Short Term"}).appendTo(ilist));
+$('<span>', {text:"Medical Student - Summer/Scholarly Activity (~6-8 weeks)"}).appendTo(ilist);
+//Graduate Student - Rotation
 ilist = $('<li>').appendTo(list);
-shortTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Medical Student - Scholarly Activity"}).appendTo(ilist));
-$('<span>', {text:"Medical Student - Scholarly Activity (~8 weeks)"}).appendTo(ilist);
+shortTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Graduate Student - Short Term"}).appendTo(ilist));
+$('<span>', {text:"Graduate Student - Rotation (~6-8 weeks)"}).appendTo(ilist);
 
 //Add space for filling in short term and long term projects
 listShortTerm = $('<ul>').appendTo(form);
