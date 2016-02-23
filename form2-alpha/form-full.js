@@ -267,7 +267,7 @@ removeTermForm = function (openBool, checkBoxes, ulElem) {
         }
     }
     if(!openBool) {
-        ulElem.hide();
+        ulElem.children().remove();
     }
     return openBool;
 };
