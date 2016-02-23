@@ -131,6 +131,7 @@ var form = $('<form>', {id:"rest"}).appendTo(main);
 // warnTitle = $('<div>', {id: "warnTitle", class: "warn"}).appendTo(form);
 
 var longTermChecks = [];
+var interTermChecks = [];
 var shortTermChecks = [];
 
 //Audience
@@ -138,25 +139,48 @@ $('<h2>', {id: "Audience", text: "Audience*"}).appendTo(form);
 
 $('<h3>', {text: "TESTING: Select any check box below and a secondary dialog box will appear."}).appendTo(form);
 
-$('<h3>', {id: "ShortTerm", text: "Long Term Project(s) (> 8 weeks)"}).appendTo(form);
+//Long term
+$('<h3>', {id: "ShortTerm", text: "Long Term Project(s) (> 1 year)"}).appendTo(form);
 $('<span>', {text: "Select All That Apply"}).appendTo(form);
 list = $('<ul>').appendTo(form);
-//Long term
 // Undergrad year
 ilist = $('<li>').appendTo(list);
-longTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Undergraduate Student - Academic Year"}).appendTo(ilist));
-$('<span>', {text:"Undergraduate Student - Academic Year"}).appendTo(ilist);
+longTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Undergraduate Student - Long Term"}).appendTo(ilist));
+$('<span>', {text:"Undergraduate Student - Multi-Year"}).appendTo(ilist);
 // Grad student
 ilist = $('<li>').appendTo(list);
 longTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Graduate or MD/PhD Student"}).appendTo(ilist));
 $('<span>', {text:"Graduate or MD/PhD Student"}).appendTo(ilist);
 // Medical Resident/Fellow
-ilist = $('<li>').appendTo(list);
-longTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Resident"}).appendTo(ilist));
-$('<span>', {text:"Medical Resident/Fellow"}).appendTo(ilist);
+// ilist = $('<li>').appendTo(list);
+// longTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Resident Long term"}).appendTo(ilist));
+// $('<span>', {text:"Medical Resident/Fellow"}).appendTo(ilist);
 
 //Add space for filling in short term and long term projects
 listLongTerm = $('<ul>').appendTo(form);
+
+//Intermediate term
+$('<h3>', {id: "Intermediate", text: "Intermediate Term Project(s) (~ 1 year)"}).appendTo(form);
+$('<span>', {text: "Select All That Apply"}).appendTo(form);
+list = $('<ul>').appendTo(form);
+//Undergrad
+ilist = $('<li>').appendTo(list);
+interTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Undergraduate Student - Academic Year"}).appendTo(ilist));
+$('<span>', {text:"Undergraduate Student - Summer"}).appendTo(ilist);
+//Med Student Year out
+ilist = $('<li>').appendTo(list);
+interTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Medical Student - Year Out"}).appendTo(ilist));
+$('<span>', {text:"Medical Student - Year Out"}).appendTo(ilist);
+//Masters Student
+ilist = $('<li>').appendTo(list);
+interTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Masters Student"}).appendTo(ilist));
+$('<span>', {text:"Masters Student - Rotation (~8 weeks)"}).appendTo(ilist);
+// Medical Resident/Fellow
+ilist = $('<li>').appendTo(list);
+interTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Resident - Year-Long"}).appendTo(ilist));
+$('<span>', {text:"Medical Resident/Fellow"}).appendTo(ilist);
+
+listInterTerm = $('<ul>').appendTo(form);
 
 //Short term
 $('<h3>', {id: "ShortTerm", text: "Short Term Project(s) (~ 8 weeks)"}).appendTo(form);
@@ -168,12 +192,21 @@ shortTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "U
 $('<span>', {text:"Undergraduate Student - Summer"}).appendTo(ilist);
 //Med Student Summer
 ilist = $('<li>').appendTo(list);
-shortTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Medical Student - Short Term"}).appendTo(ilist));
-$('<span>', {text:"Medical Student - Summer Research or Scholarly Activity (~6-8 weeks)"}).appendTo(ilist);
+shortTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Medical Student - Summer"}).appendTo(ilist));
+$('<span>', {text:"Medical Student - Summer Research (~6-8 weeks)"}).appendTo(ilist);
+//Med Student Scholarly Activity
+ilist = $('<li>').appendTo(list);
+shortTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Medical Student - Scholarly"}).appendTo(ilist));
+$('<span>', {text:"Medical Student - Scholarly Activity (~8 weeks)"}).appendTo(ilist);
 //Graduate Student - Rotation
 ilist = $('<li>').appendTo(list);
 shortTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Graduate Student - Short Term"}).appendTo(ilist));
-$('<span>', {text:"Graduate Student - Rotation (~6-8 weeks)"}).appendTo(ilist);
+$('<span>', {text:"Graduate Student - Rotation (~8 weeks)"}).appendTo(ilist);
+// Medical Resident/Fellow
+ilist = $('<li>').appendTo(list);
+shortTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Resident - Short Term"}).appendTo(ilist));
+$('<span>', {text:"Medical Resident/Fellow"}).appendTo(ilist);
+
 
 //Add space for filling in short term and long term projects
 listShortTerm = $('<ul>').appendTo(form);
@@ -187,6 +220,19 @@ longTermChecks.map(function (element) {
       longTermOpen = populateTermForm(longTermOpen, listLongTerm);
     } else {
       longTermOpen = removeTermForm(longTermOpen, longTermChecks, listLongTerm);
+    }
+  });
+});
+
+var interTermOpen = false;
+//Code to populate the spaces - long term
+interTermChecks.map(function (element) {
+  element.click(function (event) {
+    console.log('clicked!!', this.checked);
+    if(this.checked) {
+      interTermOpen = populateTermForm(longTermOpen, listLongTerm);
+    } else {
+      interTermOpen = removeTermForm(longTermOpen, longTermChecks, listLongTerm);
     }
   });
 });
