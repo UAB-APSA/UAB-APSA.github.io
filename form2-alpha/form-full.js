@@ -255,7 +255,11 @@ populateTermForm = function (openBool, list) {
   if(!openBool) {
     list.show();
     openBool = true;
-    addProject(list);
+    if (!list.children().length) { // If there are no project already then add
+        // one, this keeps checking and unchecking boxes from adding more
+        // projects.
+      addProject(list);
+    }
   }
   return openBool;
 }
@@ -267,7 +271,7 @@ removeTermForm = function (openBool, checkBoxes, ulElem) {
         }
     }
     if(!openBool) {
-        ulElem.children().remove();
+        ulElem.hide();
     }
     return openBool;
 };
