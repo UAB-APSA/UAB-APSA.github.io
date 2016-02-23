@@ -230,9 +230,9 @@ interTermChecks.map(function (element) {
   element.click(function (event) {
     console.log('clicked!!', this.checked);
     if(this.checked) {
-      interTermOpen = populateTermForm(longTermOpen, listLongTerm);
+      interTermOpen = populateTermForm(interTermOpen, listInterTerm);
     } else {
-      interTermOpen = removeTermForm(longTermOpen, longTermChecks, listLongTerm);
+      interTermOpen = removeTermForm(interTermOpen, interTermChecks, listInterTerm);
     }
   });
 });
