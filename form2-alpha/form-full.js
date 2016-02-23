@@ -137,7 +137,7 @@ var shortTermChecks = [];
 //Audience
 $('<h2>', {id: "Audience", text: "Audience*"}).appendTo(form);
 
-$('<h3>', {text: "TESTING: Select any check box below and a secondary dialog box will appear."}).appendTo(form);
+$('<div>', {text: "TESTING: Select any check box below and a secondary dialog box will appear."}).appendTo(form);
 
 //Long term
 $('<h3>', {id: "ShortTerm", text: "Long Term Project(s) (> 1 year)"}).appendTo(form);
