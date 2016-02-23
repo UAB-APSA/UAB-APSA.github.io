@@ -166,7 +166,7 @@ $('<span>', {text:"Undergraduate Student - Summer"}).appendTo(ilist);
 //Med Student Summer
 ilist = $('<li>').appendTo(list);
 shortTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Medical Student - Short Term"}).appendTo(ilist));
-$('<span>', {text:"Medical Student - Summer/Scholarly Activity (~6-8 weeks)"}).appendTo(ilist);
+$('<span>', {text:"Medical Student - Summer Research or Scholarly Activity (~6-8 weeks)"}).appendTo(ilist);
 //Graduate Student - Rotation
 ilist = $('<li>').appendTo(list);
 shortTermChecks.push($('<input>', {name: "Audience", type: "checkbox", value: "Graduate Student - Short Term"}).appendTo(ilist));
