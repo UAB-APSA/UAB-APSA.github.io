@@ -292,14 +292,14 @@ var getImportantDates, importantDates;
         getEventImages = function (images) {
             var i, ret, div, scale, imageBase = url + "images" + "/", imageArr;
             scale = 2;
-            imageArr = images.split(';');
+            imageArr = images;
             if (!imageArr.length) {imageArr[0] = images; }
             imageArr = imageArr.map(function(x) {return x.replace(/^\s*|\s*$/g, ""); });
             ret = $('<div>');
             $('<a>', {href: "#", text: "Event Images"}).click(thisIsMeClick).appendTo(ret);
             div = $('<div>', {'class': "slide", style: "border:2px solid black;" + "height:" + 540 / scale + 'px;overflow: hidden;margin-left: auto;margin-right: auto;display:block;', id: 'slideContent'}).appendTo(ret);
             for (i = 0; i < imageArr.length; i += 1) {
-                $('<img>', {'class': 'slideIMG', alt: '#', title: 'Click for next slide.', style: "margin-left: auto;margin-right: auto;display:block;position:relative;height:" + 540 / scale + 'px;', src: imageBase + encodeURIComponent(imageArr[i])}).click(i === imageArr.length - 1 ? slideClickLast : slideClick).appendTo(div);
+                $('<img>', {'class': 'slideIMG', alt: '#', title: 'Click for next slide.', style: "margin-left: auto;margin-right: auto;display:block;position:relative;height:" + 540 / scale + 'px;', src: imageArr[i]}).click(i === imageArr.length - 1 ? slideClickLast : slideClick).appendTo(div);
             }
             return ret;
         };
