@@ -107,9 +107,9 @@ var getImportantDates, importantDates;
     updateChanges = function () {
         var webData = {}, editAllSections, updateRoster, sortByLastName, semesterClick, getThisIsMeImages, url, thisIsMeClick, slideClick, slideClickLast,
             updateDates, updatePastEvents, getEventImages, updateOtherDates;
-        url = 'https://3fb447c8ea45275c3e71dc49d678c53d6b103efb.googledrive.com/host/0BwdB5oEiQBYWZFk2ZkRNM1d3ZXc/';
+        url = 'https://script.google.com/macros/s/AKfycbzPErAhJZZNgoMvto5WQnUuOhbfLcek0sTlNRUzcoJWOwX6ScOZ/exec';
         jQuery.get(url + '?' + (Math.random()).toString().replace('0.', ''), function (x) {
-            webData = JSON.parse(x);
+            webData = x;
             editAllSections();
         });
         editAllSections = function () {
@@ -362,7 +362,7 @@ var getImportantDates, importantDates;
      });
 
 
-    //updateChanges();
+    updateChanges();
 }());
 
 
