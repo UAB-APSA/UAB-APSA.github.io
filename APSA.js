@@ -154,7 +154,7 @@ var getImportantDates, importantDates;
                     indText.html(indText.html() + ", " + rost[i].office);
                 }
                 if (rost[i].hasOwnProperty('thisIsMe')) {
-                    indText.append(getThisIsMeImages(rost[i].name, rost[i].thisIsMe));
+                    indText.append(getThisIsMeImages(rost[i].thisIsMe));
                 }
                 $('<td>', {style: "width:50%;padding:5px;", html: indText}).appendTo(trow);
             }
@@ -276,14 +276,14 @@ var getImportantDates, importantDates;
 
 
         //Sub functions
-        getThisIsMeImages = function (name, number) {
+        getThisIsMeImages = function (images) {
             var i, ret, div, scale, imageBase = url + "thisIsMeImages" + "/" + encodeURIComponent(name) + "/Slide";
             scale = 2;
             ret = $('<span>', {text: ', '});
             $('<a>', {href: "#", text: "This is me"}).click(thisIsMeClick).appendTo(ret);
             div = $('<div>', {'class': "slide", style: "border:2px solid black;height:" + 540 / scale + 'px;overflow: hidden;margin-left: auto;margin-right: auto', id: 'slideContent'}).appendTo(ret);
-            for (i = 1; i <= number; i += 1) {
-                $('<img>', {'class': 'slideIMG', alt: '#', title: 'Click for next slide.', style: "display:block;position:relative;height:" + 540 / scale + 'px;margin-left: auto;margin-right: auto;', src: imageBase + i + '.jpg'}).click(i === number ? slideClickLast : slideClick).appendTo(div);
+            for (i = 1; i <= images.length; i += 1) {
+                $('<img>', {'class': 'slideIMG', alt: '#', title: 'Click for next slide.', style: "display:block;position:relative;height:" + 540 / scale + 'px;margin-left: auto;margin-right: auto;', src: images[i]}).click(i === number ? slideClickLast : slideClick).appendTo(div);
             }
             return ret;
         };
