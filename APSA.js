@@ -277,12 +277,13 @@ var getImportantDates, importantDates;
 
         //Sub functions
         getThisIsMeImages = function (images) {
-            var i, ret, div, scale, imageBase = url + "thisIsMeImages" + "/" + encodeURIComponent(name) + "/Slide";
+            var number, i, ret, div, scale, imageBase = url + "thisIsMeImages" + "/" + encodeURIComponent(name) + "/Slide";
             scale = 2;
+            number = images.length;
             ret = $('<span>', {text: ', '});
             $('<a>', {href: "#", text: "This is me"}).click(thisIsMeClick).appendTo(ret);
             div = $('<div>', {'class': "slide", style: "border:2px solid black;height:" + 540 / scale + 'px;overflow: hidden;margin-left: auto;margin-right: auto', id: 'slideContent'}).appendTo(ret);
-            for (i = 1; i <= images.length; i += 1) {
+            for (i = 1; i <= number; i += 1) {
                 $('<img>', {'class': 'slideIMG', alt: '#', title: 'Click for next slide.', style: "display:block;position:relative;height:" + 540 / scale + 'px;margin-left: auto;margin-right: auto;', src: images[i]}).click(i === number ? slideClickLast : slideClick).appendTo(div);
             }
             return ret;
