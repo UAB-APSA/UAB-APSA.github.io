@@ -362,7 +362,7 @@ var getImportantDates, importantDates;
      });
 
 
-    updateChanges();
+    //updateChanges();
 }());
 
 
