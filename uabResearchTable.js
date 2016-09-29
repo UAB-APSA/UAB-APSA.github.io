@@ -32,7 +32,7 @@ var APSAtable = (function () {
                   totalScore = keep[dict[found[k]][j]];
                   if (!previousScore) {
                     if (!totalScore) {
-                      keep[dict[found[k]][j]] = newScore; // Set total score to new score 
+                      keep[dict[found[k]][j]] = newScore; // Set total score to new score
                     } else {
                       keep[dict[found[k]][j]] += newScore; // Add new score to total score
                     }
@@ -123,7 +123,8 @@ var APSAtable = (function () {
       if (div.length < 1) {
         console.error('Could not find div that was indicated, make sure one exists with id=[divID].');
       } else {
-        jQuery.get('https://3fb447c8ea45275c3e71dc49d678c53d6b103efb.googledrive.com/host/0BwdB5oEiQBYWZFk2ZkRNM1d3ZXc/research.json', startBuilding);
+        var url = 'https://script.google.com/macros/s/AKfycbzG8U3Em5S9pXRgoGIVTBttljBiTfCLW1A-NdZvLPMk8i8LhOk/exec';
+        jQuery.get(url, startBuilding);
       }
     }
   };
@@ -248,7 +249,7 @@ var APSAtable = (function () {
       innerRet.append(textFiller);
       ret = $('<div>', {style:"width:100%;", "class":"dropdown"}).append(innerRet);
       innerRet = $('<ul>', {'class':"dropdown-menu", 'aria-labelledby':"dropdownMenu" + num}).appendTo(ret);
-      
+
       //ret = $("<select>", {style: "width:100%"}).append($('<option>', {style: "width:100%;", value: "", text: 'filter'})).change(changeFunc);
       a = $('<a>', {text: "All", val: ""}).click(changeFunc);
       $('<li>').append(a).appendTo(innerRet);
