@@ -149,7 +149,7 @@ var APSAtable = (function () {
       window.open('https://script.google.com/macros/s/AKfycbx5bv2SQtwYvwAxs0NYTkjuypDXgsotKjESKAf1uOwRijXCMELb/exec', '_parent');
     });
 
-    data = JSON.parse(x);
+    data = x;
     dict = data.dict;
     dataArr = data.data;
     searchStr = data.str;
