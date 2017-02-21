@@ -252,7 +252,7 @@ var APSAtable = (function () {
       class_for_menu += indexPercent < 0.5
           ? ' pull-left'
           : ' pull-right';
-      innerRet = $('<ul>', {'style': 'height: auto;max-height: 300px;', 'class':class_for_menu, 'aria-labelledby':"dropdownMenu" + num}).appendTo(ret);
+      innerRet = $('<ul>', {'style': 'overflow-y:scroll;height: auto;max-height: 300px;', 'class':class_for_menu, 'aria-labelledby':"dropdownMenu" + num}).appendTo(ret);
       //ret = $("<select>", {style: "width:100%"}).append($('<option>', {style: "width:100%;", value: "", text: 'filter'})).change(changeFunc);
       a = $('<a>', {text: "All", val: ""}).click(changeFunc);
       $('<li>').append(a).appendTo(innerRet);
