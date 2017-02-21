@@ -201,8 +201,8 @@ var APSAtable = (function () {
   };
 
   filterMaker = function (cat, indexPercent) {
-    var ret, i, changeFunc, mainFunc, innerRet, num, a, lis, text, textFiller;
-    lis = [], class_for_menu;
+    var ret, i, changeFunc, mainFunc, innerRet, num, a, lis, text, textFiller, class_for_menu;
+    lis = [];
 
     mainFunc = function (evt) {
       var k, j, that, removed = [], width;
