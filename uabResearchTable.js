@@ -176,7 +176,7 @@ var APSAtable = (function () {
     row2 = $("<tr>", {style: "width:100%;padding:5px"}).appendTo(table);
     for (i = 0; i < length; i += 1) {
       $("<td>", {style: "padding:5px;width:" + options.visible.order[i][1], text: options.visible.order[i][2]}).appendTo(row1);
-      $("<td>", {style: "resize:none;padding:5px;width:" + options.visible.order[i][1]}).append(filterMaker(options.visible.order[i][0])).appendTo(row2);
+      $("<td>", {style: "resize:none;padding:5px;width:" + options.visible.order[i][1]}).append(filterMaker(options.visible.order[i][0], i / length)).appendTo(row2);
     }
     makeTableBody(table);
   };
@@ -200,12 +200,12 @@ var APSAtable = (function () {
       }, false);
   };
 
-  filterMaker = function (cat) {
+  filterMaker = function (cat, indexPercent) {
     var ret, i, changeFunc, mainFunc, innerRet, num, a, lis, text, textFiller;
     lis = [];
 
     mainFunc = function (evt) {
-      var k, j, that, removed = [], width;
+      var k, j, that, removed = [], width, class_for_menu;
       that = evt.target;
       evt.preventDefault();
       console.log(evt, that.value);
@@ -248,8 +248,11 @@ var APSAtable = (function () {
       textFiller =$('<div>',{style:"overflow:hidden"}).append(text).append($('<span>&nbsp;</span><span class="caret"></span>'));
       innerRet.append(textFiller);
       ret = $('<div>', {style:"width:100%;", "class":"dropdown"}).append(innerRet);
-      innerRet = $('<ul>', {'class':"dropdown-menu", 'aria-labelledby':"dropdownMenu" + num}).appendTo(ret);
-
+      class_for_menu = "dropdown-menu";
+      class_for_menu += indexPercent < 0.5
+          ? ' pull-left'
+          : ' pull-right';
+      innerRet = $('<ul>', {'style': 'height: auto;max-height: 300px;', 'class':class_for_menu, 'aria-labelledby':"dropdownMenu" + num}).appendTo(ret);
       //ret = $("<select>", {style: "width:100%"}).append($('<option>', {style: "width:100%;", value: "", text: 'filter'})).change(changeFunc);
       a = $('<a>', {text: "All", val: ""}).click(changeFunc);
       $('<li>').append(a).appendTo(innerRet);
