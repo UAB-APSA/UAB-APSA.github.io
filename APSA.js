@@ -46,19 +46,20 @@ var getImportantDates, importantDates;
                         '<br /><br /><a href="' + urlBase + 'APSAConstitution_2013_01_10.pdf">Download Constitution</a><br /><br /></div>'}).appendTo(main);
     //Officers
     $('<div />', {html: '<a href="#" id="tab2">Officers</a><div class= "hide" style="margin-left:10px"><table><tr>' +
-                        '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/TylerMcCaw.jpg"></img><br /><b>President</b><br />Tyler McCaw</td>' +
-                        '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/Hu_Muhan.jpg"></img><br /><b>Vice President</b><br />Muhan Hu</td>' +
-                        '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/jaclyn_souder.jpg"></img><br /><b>Secretary</b><br />Paige Souder</td>' +
-                        '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/Sebastian_Chung.jpg"></img><br /><b>Treasurer</b><br />Sebastian Chung</td>' +
+                        '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/paige_president.jpg"></img><br /><b>President</b><br />Paige Souder</td>' +
+                        '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/patrick_vp.jpeg"></img><br /><b>Vice President</b><br />Patrick Molina</td>' +
+                        '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/muhan_secretary.jpg"></img><br /><b>Secretary</b><br />Muhan Hu</td>' +
+                        '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/tyler_treasurer.jpg"></img><br /><b>Treasurer</b><br />Tyler McCaw</td>' +
                         '</tr><tr>' +
-                        '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/Weaver_Alice.jpg"></img><br /><b>Past President</b><br />Alice Weaver</td>' +
+                        // '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/Weaver_Alice.jpg"></img><br /><b>Past President</b><br />Alice Weaver</td>' +
                         '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/Dussaq_Alex.jpg"></img><br /><b>Webmaster</b><br />Alex Dussaq</td>' +
-                        '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/adam_beg.jpg"></img><br /><b>SOM Representative MS1/2</b><br />Adam Beg</td>' +
+                        '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/roxie_msliason.jpg"></img><br /><b>SOM Representative</b><br />Roxie Lockhart</td>' +
+                        '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/brendon_msliason.jpg"></img><br /><b>SOM Representative</b><br />Brendon Herring</td>' +
                         // '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/Dunlap_Quinn.jpeg"></img><br /><b>SOM Representative MS3/4</b><br />Quinn Dunlap</td>' +
-                        '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/Corey.jpg"></img><br /><b>Research Database Director</b><br />Corey Duke</td>' +
+                        '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/Corey.jpg"></img><br /><b>Research Officer</b><br />Corey Duke</td>' +
                         '</tr><tr>' +
                         '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/Lorenz_Robin.jpg"></img><br /><b>Faculty Advisor</b><br />Dr. Robin Lorenz</td>' +
-                        '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/Redmond_Nicole.jpg"></img><br /><b>Faculty Advisor</b><br />Dr. Nicole Redmond</td>' +
+                        // '<td style="text-align:center;width:150px;"><img style="width:140px;" src="' + urlBase + 'officerImages/Redmond_Nicole.jpg"></img><br /><b>Faculty Advisor</b><br />Dr. Nicole Redmond</td>' +
                         '</tr>' +
                         '</table></div><br />'}).appendTo(main);
 
