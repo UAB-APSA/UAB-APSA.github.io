@@ -266,7 +266,7 @@ var APSAtable = (function () {
     } else if (cat !== 'date') {
       ret = $('<input>', {placeholder: "Search by keyword or PI", style: 'width:95%'}).keyup(options.visible[cat]);
     }
-    searches[cat] = ret;
+    options.searches[cat] = ret;
     return ret;
   };
 
