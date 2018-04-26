@@ -2,7 +2,7 @@
 var APSAtable = (function () {
   'use strict';
   console.log('https://uab-apsa.github.io/uabResearchTable.js ' +
-    'v2.2.3');
+    'v2.3.1');
 
   //variables
   var makeActualTable, parent_url, updateSize, setUpSizing, madeBy, table, myModalLabel, modalBody, searchStr, filterMaker, tableRows, updateData, pageText, rightClick, leftClick, cPage, maxPage, getList, dict, options, main, makeTable, makeTableBody, $, div, data, dataArr, startBuilding, wordSearch, order, perPage;
@@ -90,7 +90,8 @@ var APSAtable = (function () {
       Site: ["Birmingham Campus", "Huntsville Campus", "Tuscaloosa Campus", "Montgomery Campus", "Children’s of Alabama", "Birmingham VA Medical Center", "Southern Research Institute", "Hudson Alpha", "Other"],
       date: order
     },
-    invisible: ["Stipend", "description", "cPN", "cEmail", "cName", "PI", "file", "urlToAddRes"]
+    invisible: ["Stipend", "description", "cPN", "cEmail", "cName", "PI", "file", "urlToAddRes"],
+    searches : {}
   };
 
   //Global functions
@@ -265,6 +266,7 @@ var APSAtable = (function () {
     } else if (cat !== 'date') {
       ret = $('<input>', {placeholder: "Search by keyword or PI", style: 'width:95%'}).keyup(options.visible[cat]);
     }
+    searches[cat] = ret;
     return ret;
   };
 
