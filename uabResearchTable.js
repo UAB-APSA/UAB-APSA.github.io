@@ -289,6 +289,25 @@ var APSAtable = (function () {
     pageText.appendTo(pager);
     $('<button>', {"class": "tableButton", html: '&#10140;'}).appendTo(pager).click(rightClick);
     updateData();
+
+    // Done building, set defaults here
+    (function () {
+        var i, keyPair, propObj, selectURIStr, selectURIArr;
+        keyPair;
+        propObj = {};
+
+        //Get the url stuff
+        selectURIStr = decodeURI(location.toString().split('?')[1]);
+        selectURIArr = selectURIStr.split('&');
+        for (i = 0; i < selectURIArr.length; i += 1) {
+            keyPair = selectURIArr[i].split('=');
+            if (keyPair.length === 2) {
+                propObj[keyPair[0]] = keyPair[1];
+            }
+        }
+        console.log(propObj);
+
+    }());
     // console.log(tableRows);
     // div.append($('<div>', {html: "This table is powered by <a href='http://www.uab.edu/medicine/mstp/academics/mstp/uab-apsa-chapter' target='_parent'>UAB APSA</a>. <a target='_parent' href='https://script.google.com/macros/s/AKfycbx5bv2SQtwYvwAxs0NYTkjuypDXgsotKjESKAf1uOwRijXCMELb/exec'>Click here</a> to edit your entry or submit a new project."}))
   };
