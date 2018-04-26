@@ -2,7 +2,7 @@
 var APSAtable = (function () {
   'use strict';
   console.log('https://uab-apsa.github.io/uabResearchTable.js ' +
-    'v2.3.2');
+    'v2.3.3');
 
   //variables
   var makeActualTable, parent_url, updateSize, setUpSizing, madeBy, table, myModalLabel, modalBody, searchStr, filterMaker, tableRows, updateData, pageText, rightClick, leftClick, cPage, maxPage, getList, dict, options, main, makeTable, makeTableBody, $, div, data, dataArr, startBuilding, wordSearch, order, perPage;
@@ -316,6 +316,10 @@ var APSAtable = (function () {
             keyPair = selectURIArr[i].split('=');
             if (keyPair.length === 2) {
                 propObj[keyPair[0]] = keyPair[1];
+
+                //Actually set the default
+                console.log('setting default');
+                options.searches[keyPair[0]](keyPair[1])
             }
         }
         console.log(propObj, options);
@@ -432,10 +436,10 @@ var APSAtable = (function () {
     }
 
     //Comment out when not debuging
-    main.options = options;
-    main.updateData = updateData;
-    main.data = data;
-    main.dataArr = dataArr;
+    // main.options = options;
+    // main.updateData = updateData;
+    // main.data = data;
+    // main.dataArr = dataArr;
 
     //update table size`
     updateSize();
