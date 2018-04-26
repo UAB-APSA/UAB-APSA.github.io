@@ -425,10 +425,10 @@ var APSAtable = (function () {
     //Comment out when not debuging
     main.options = options;
     main.updateData = updateData;
-    main.data = JSON.parse(JSON.stringify(data));
+    main.data = data;
     main.dataArr = dataArr;
 
-    //update table size
+    //update table size`
     updateSize();
   };
 
