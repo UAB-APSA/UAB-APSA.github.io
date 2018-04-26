@@ -307,7 +307,7 @@ var APSAtable = (function () {
                 propObj[keyPair[0]] = keyPair[1];
             }
         }
-        console.log(propObj);
+        console.log(propObj, options);
 
     }());
     // console.log(tableRows);
