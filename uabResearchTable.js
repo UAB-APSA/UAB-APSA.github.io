@@ -244,6 +244,7 @@ var APSAtable = (function () {
     changeFunc = mainFunc;
     num = Math.random().toString().replace('0.','');
     if (typeof options.visible[cat] !== 'function') {
+      // Drop down search
       text = $('<span>', {text: "All"});
       innerRet = $('<button>', {style:"width:100%;", "class": "btn btn-default dropdown-toggle", type: "button", id: "dropdownMenu" + num, 'data-toggle':"dropdown", 'aria-haspopup':"true", 'aria-expanded':"true"});
       textFiller =$('<div>',{style:"overflow:hidden"}).append(text).append($('<span>&nbsp;</span><span class="caret"></span>'));
@@ -264,9 +265,16 @@ var APSAtable = (function () {
         $('<li>').append(a).appendTo(innerRet);
       }
     } else if (cat !== 'date') {
+      // Text search
       ret = $('<input>', {placeholder: "Search by keyword or PI", style: 'width:95%'}).keyup(options.visible[cat]);
     }
-    options.searches[cat] = ret;
+    options.searches[cat] = function (setTo) {
+      changeFunc({
+        target: {
+          value: setTo
+        }
+      });
+    };
     return ret;
   };
 
