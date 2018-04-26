@@ -47,7 +47,7 @@ var APSAtable = (function () {
     if (queryString.length < 2) {
         queryString = "";
     } else {
-        queryString = encodeURIComponent(queryString);
+        queryString = encodeURI(queryString);
     }
 
     //variable declarations
