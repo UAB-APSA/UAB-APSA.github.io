@@ -41,11 +41,13 @@ var APSAtable = (function () {
     keys = Object.keys(categoryObj);
 
     for (i = 0; i < keys.length; i += 1) {
-        queryString += keys[i] + categoryObj[keys[i]];
+        queryString += keys[i] + "=" + categoryObj[keys[i]];
     }
 
     if (queryString.length < 2) {
         queryString = "";
+    } else {
+        queryString = encodeURIComponent(queryString);
     }
 
     //variable declarations
