@@ -426,6 +426,7 @@ var APSAtable = (function () {
 
   main.options = options;
   main.updateData = updateData;
+  main.data = data;
 
   return main;
 
