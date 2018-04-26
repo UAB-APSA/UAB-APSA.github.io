@@ -291,7 +291,9 @@ var APSAtable = (function () {
     updateData();
 
     // Done building, set defaults here
+    console.log('done basic build');
     (function () {
+        console.log('now running defaults');
         var i, keyPair, propObj, selectURIStr, selectURIArr;
         keyPair;
         propObj = {};
