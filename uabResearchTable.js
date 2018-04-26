@@ -421,13 +421,16 @@ var APSAtable = (function () {
         tableRows[i].row.hide();
       }
     }
+
+    //Comment out when not debuging
+    main.options = options;
+    main.updateData = updateData;
+    main.data = JSON.parse(JSON.stringify(data));
+    main.dataArr = dataArr;
+
+    //update table size
     updateSize();
   };
-
-  main.options = options;
-  main.updateData = updateData;
-  main.data = JSON.parse(JSON.stringify(data));
-  main.dataArr = dataArr;
 
   return main;
 
