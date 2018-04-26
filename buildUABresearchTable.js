@@ -25,16 +25,28 @@ var APSAtable = (function () {
   main = {};
   //Global functions
   //Actual table maker
-  main.makeTable = function (divID) {
+  main.makeTable = function (divID, categoryObj) {
     // These functions require jQuery and a div id to
     // be pointed to, all other functionality is built in
     // divID should be a string.
-    return makeTable(divID);
+    return makeTable(divID, categoryObj);
   };
 
   //Local functions
-  makeTable = function (divID) {
+  makeTable = function (divID, categoryObj) {
     //variables
+
+    var queryString = "?", keys, i;
+
+    keys = Object.keys(categoryObj);
+
+    for (i = 0; i < keys.length; i += 1) {
+        queryString += keys[i] + categoryObj[keys[i]];
+    }
+
+    if (queryString.length < 2) {
+        queryString = "";
+    }
 
     //variable declarations
 
@@ -48,7 +60,7 @@ var APSAtable = (function () {
         console.error('Could not find div that was indicated, make sure one exists with id=[divID].');
       } else {
         div.empty();
-        frame = $('<iframe>', {scrolling: 'no', seamless: "", frameborder: 0, allowTransparency:'true', width: '100%', src: url}).appendTo(div);
+        frame = $('<iframe>', {scrolling: 'no', seamless: "", frameborder: 0, allowTransparency:'true', width: '100%', src: url + queryString}).appendTo(div);
       }
     }
   };
