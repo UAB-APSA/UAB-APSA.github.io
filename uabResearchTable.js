@@ -424,6 +424,9 @@ var APSAtable = (function () {
     updateSize();
   };
 
+  main.options = options;
+  main.updateData = updateData;
+
   return main;
 
 }());
