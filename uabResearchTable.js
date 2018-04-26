@@ -426,7 +426,8 @@ var APSAtable = (function () {
 
   main.options = options;
   main.updateData = updateData;
-  main.data = data;
+  main.data = JSON.parse(JSON.stringify(data));
+  main.dataArr = dataArr;
 
   return main;
 
